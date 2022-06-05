@@ -1,17 +1,18 @@
-from flask import Flask
+from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates', static_folder='static')
 
 
-@app.route("/register", methods=["POST"])
+
+@app.route("/register", methods=["GET","POST"])
 def register():
     # TODO:
-    return ""
+    return render_template('register.html')
 
 
 @app.route("/login")
 def login():
-    return ""
+    return render_template('login.html')
 
 
 @app.route("/home")
@@ -32,4 +33,4 @@ def doctors():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

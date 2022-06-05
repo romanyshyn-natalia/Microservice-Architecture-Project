@@ -1,0 +1,13 @@
+GET http://localhost:8080/login
+Accept: text/html
+###
+
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+"username": "nataliia",
+"password": "shitserver1"
+}
+
+###
