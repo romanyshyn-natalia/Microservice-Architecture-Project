@@ -1,0 +1,59 @@
+GET http://localhost:8081/login
+Accept: text/html
+
+###
+
+POST http://localhost:8081/register
+Content-Type: application/json
+
+{
+  "email": "romanyshyn.n@ucu.edu.ua",
+  "username": "Nataliia_Romanyshyn",
+  "role": "Doctor",
+  "password1": "shitserver1",
+  "password2": "shitserver1"
+}
+
+###
+
+
+POST http://localhost:8081/register
+Content-Type: application/json
+
+{
+  "email": "omelkina.n@ucu.edu.ua",
+  "username": "Daria_Omelkina",
+  "role": "Main Doctor",
+  "password1": "badday100",
+  "password2": "badday100"
+}
+
+###
+
+
+POST http://localhost:8081/register
+Content-Type: application/json
+
+{
+  "email": "sun@ucu.edu.ua",
+  "username": "Sunny_Day",
+  "role": "Hospital worker",
+  "password1": "badday101",
+  "password2": "badday101"
+}
+
+###
+
+
+POST http://localhost:8081/register
+Content-Type: application/json
+
+{
+  "email": "korabliova@ucu.edu.ua",
+  "username": "Anna_Korabliova",
+  "role": "Hospital worker",
+  "password1": "pass1111",
+  "password2": "pass1111"
+}
+
+###

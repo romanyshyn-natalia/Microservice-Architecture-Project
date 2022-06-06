@@ -1,0 +1,119 @@
+<head>
+    <meta charset="utf-8"/>
+    <title>Project Hospital</title>
+    <link rel="stylesheet" href="/static/css/dark_theme.css">
+    <script src="https://kit.fontawesome.com/2b242693ae.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/jpg" href="/public/logo.png"/>
+</head>
+
+<body>
+
+<section class="section">
+    <div class="columns">
+        <div class="column">
+        </div>
+        <div class="column">
+            <section class="section">
+                <a href="/">
+                    <h1 class="title">Project Hospital</h1>
+                    <h2 class="subtitle">Search for patients and medical specialists of Your hospital</h2>
+                </a>
+            </section>
+
+        </div>
+        <div class="column">
+        </div>
+    </div>
+
+</section>
+
+
+<section>
+    <div class="columns">
+        <div class="column is-1">
+
+        </div>
+
+
+        <div class="column">
+            <!--d, status, assigned_doctors([name, surname, id]), age, sex, diagnosis, registration_date)-->
+
+            <ul class="nostyle home">
+                <a class="section">
+                    <h3 class="subtitle">Search results</h3>
+                </a>
+                {% for result in results %}
+                <li class="section">
+                    <div class="card">
+                        <a href="#">
+                            <div class="card-content">
+                                <div class="columns">
+
+                                    <div class="column">
+                                        <h2 class="title is-6">Name</h2>
+                                        <p class="subtitle">{{result.name}}</p>
+                                    </div>
+                                    <div class="column">
+                                        <h2 class="title is-5">Surname</h2>
+                                        <p class="subtitle">{{result.surname}}</p>
+                                    </div>
+                                    <div class="column">
+                                        <h2 class="title is-5">ID</h2>
+                                        <p class="subtitle">{{result.id}}</p>
+                                    </div>
+                                    <div class="column">
+                                        <h2 class="title is-5">Status</h2>
+                                        <p class="subtitle">{{result.status}}</p>
+                                    </div>
+                                    <div class="column">
+                                        <h2 class="title is-5">Age</h2>
+                                        <p class="subtitle">{{result.age}}</p>
+                                    </div>
+                                    <div class="column">
+                                        <h2 class="title is-5">Sex</h2>
+                                        <p class="subtitle">{{result.sex}}</p>
+                                    </div>
+                                    <div class="column">
+                                        <h2 class="title is-5">Diagnosis</h2>
+                                        <p class="subtitle">{{result.diagnosis}}</p>
+                                    </div>
+                                    <div class="column">
+                                        <h2 class="title is-5">Registration date</h2>
+                                        <p class="subtitle">{{result.date}}</p>
+                                    </div>
+                                    <div class="column">
+                                        <h2 class="title is-5">Assigned doctor</h2>
+                                        <p class="subtitle">{{result.doctor}}</p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                {% endfor %}
+
+
+            </ul>
+        </div>
+
+
+        <div class="column  is-1">
+
+        </div>
+    </div>
+</section>
+
+</body>
+
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            Project for Software Architecture Course. <a
+                href="https://github.com/romanyshyn-natalia/Microservice-Architecture-Project"><i
+                class="fa fa-github-alt"></i></a>
+        </p>
+    </div>
+</footer>

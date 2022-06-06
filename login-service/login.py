@@ -1,17 +1,12 @@
-from flask import Flask, request
 import pymongo
-from util import hash_unicode
+import hashlib
+from flask import Flask, request
 
 app = Flask(__name__)
 
 client = pymongo.MongoClient()
 db = client.users
 records = db['registered-users']
-
-
-# # test populate of db
-# records.insert_one({"username": "nataliia", "password": hash_unicode("shitserver1")})
-# records.insert_one({"username": "unicorn", "password": hash_unicode("badday100")})
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -24,7 +19,7 @@ def login():
         user_check = records.find_one({"username": user})
         if user_check:
             pass_check = user_check['password']
-            if hash_unicode(passwrd) == pass_check:
+            if hashlib.sha256(passwrd.encode('utf-8')).hexdigest() == pass_check:
                 print("You are logged in!")
             else:
                 print("Wrong password!")

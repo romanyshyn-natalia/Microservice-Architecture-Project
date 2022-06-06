@@ -1,13 +1,45 @@
 GET http://localhost:8080/login
 Accept: text/html
+
 ###
 
 POST http://localhost:8080/login
 Content-Type: application/json
 
 {
-"username": "nataliia",
-"password": "shitserver1"
+  "username": "Nataliia_Romanyshyn",
+  "password": "shitserver1"
+}
+
+###
+
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "Daria_Omelkina",
+  "password": "badday100"
+}
+
+###
+
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "Daria_Omelkina",
+  "password": "badday000"
+}
+
+###
+
+
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "bla_bla",
+  "password": "blaaa"
 }
 
 ###
