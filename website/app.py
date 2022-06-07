@@ -2,12 +2,11 @@ import requests
 from flask import Flask, render_template, request, redirect, url_for, make_response
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-patients_service_url = "http://localhost:9042"
+patients_service_url = "http://localhost:8880"
+doctors_service_url = "http://localhost:9042"
 login_service_url = "http://localhost:8080/login"
 register_service_url = "http://localhost:8081/register"
 
-
-# sessions = dict()
 
 @app.route("/", methods=["GET"])
 def base():
@@ -17,13 +16,6 @@ def base():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == 'POST':
-        print({
-            "email": request.form.get("email"),
-            "username": request.form.get("username"),
-            "role": request.form.get("role"),
-            "password1": request.form.get("password1"),
-            "password2": request.form.get("password2")
-        })
         x = requests.post(register_service_url, json={
             "email": request.form.get("email"),
             "username": request.form.get("username"),
@@ -48,7 +40,6 @@ def login():
             "password": request.form.get("password"),
         })
         if x.text != "success":
-            # cache.set("LOGGED_IN", False)
             return render_template('login.html', error=x.text)
         else:
             resp = make_response(redirect(url_for('home')))
@@ -62,8 +53,6 @@ def login():
 def home():
     if not request.cookies.get('LOGGED_IN') == "True":
         return redirect(url_for('login'))
-    # Search patients: GET (name, surname) (id) -> data
-    # Search doctors: GET (name, surname) (id) -> data
     return render_template('home.html')
 
 
@@ -74,26 +63,34 @@ def results(search_result=None):
         form_surname = request.form.get("surname")
         form_id = request.form.get("id")
 
-        # TODO:
+        if request.form.get("search") == "patient":
+            search_for_url = patients_service_url
+            assigned_key = "Assigned doctor id"
+        else:
+            search_for_url = doctors_service_url
+            assigned_key = "Assigned patients ids"
+
+        # # TODO:
         if not (form_name or form_surname):
-            post_response = requests.post(patients_service_url, headers={'content-type': 'application/json'},
+            post_response = requests.post(search_for_url, headers={'content-type': 'application/json'},
                                           data={"id": form_id})
         else:
-            post_response = requests.post(patients_service_url, headers={'content-type': 'application/json'},
+            post_response = requests.post(search_for_url, headers={'content-type': 'application/json'},
                                           data={"name": form_name, "surname": form_surname})
+
         print(post_response.text)
 
         search_result = [
             {"name": "John", "surname": "Smith", "id": "12345", "status": "Rehabilitation", "diagnosis": "Unknown",
-             "date": "12.04.2010", "age": "20", "sex": "Male", "doctor": "Tom Brown (5123)"},
+             "date": "12.04.2010", "age": "20", "sex": "Male", "assigned_key": [assigned_key, "1"]},
             {"name": "John 2", "surname": "Smith 2", "id": "876545", "status": "Rehabilitation", "diagnosis": "Unknown",
-             "date": "12.04.2010", "age": "20", "sex": "Male", "doctor": "Tom Brown (5123)"}
+             "date": "12.04.2010", "age": "20", "sex": "Male", "assigned_key": [assigned_key, "2"]}
         ]
 
     if not search_result:
         search_result = [
-            {"name": "-", "surname": "-", "id": "-", "status": "-", "diagnosis": "-",
-             "date": "-", "age": "-", "sex": "-", "doctor": "-"}
+            {"name": "empty", "surname": "empty", "id": "empty", "status": "empty", "diagnosis": "empty",
+             "date": "empty", "age": "empty", "sex": "empty", "assigned_key": ["Assigned doctor id", "empty"]}
         ]
 
     return render_template('results.html', results=search_result)

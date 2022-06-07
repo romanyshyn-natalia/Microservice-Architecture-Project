@@ -14,7 +14,7 @@
         </div>
         <div class="column">
             <section class="section">
-                <a href="/">
+                <a>
                     <h1 class="title">Project Hospital</h1>
                     <h2 class="subtitle">Search for patients and medical specialists of Your hospital</h2>
                 </a>
@@ -32,7 +32,8 @@
 
         </div>
         <div class="column">
-            <form action="{{ url_for('results')}}" method="post">
+            <form id="1" action="{{ url_for('results')}}" method="post">
+
                 <article class="panel is-info">
                     <p class="panel-heading">
                         Search for patients:
@@ -45,9 +46,11 @@
                             <div class="control">
                                 <div class="columns">
                                     <div class="column">
-                                        <input class="input" type="text" id="name" name="name" placeholder="Alex">
+                                        <input class="input" type="text" id="patient_name" name="name"
+                                               placeholder="Alex">
                                     </div>
-                                    <div class="column"><input class="input" type="text" id="surname" name="surname"
+                                    <div class="column"><input class="input" type="text" id="patient_surname"
+                                                               name="surname"
                                                                placeholder="Smith">
                                     </div>
                                 </div>
@@ -71,7 +74,7 @@
                         <div class="field">
                             <label class="label">Insert ID</label>
                             <div class="control">
-                                <input class="input " type="text" id="id" name="id" placeholder="12345">
+                                <input class="input " type="text" id="patient_id" name="id" placeholder="12345">
                             </div>
                         </div>
 
@@ -79,7 +82,8 @@
 
                     <div class="panel-block">
                         <p class="control">
-                            <button class="button is-fullwidth is-info" type="submit">
+                            <button class="button is-fullwidth is-info" type="submit"
+                            name="search" value="patient">
                                 Search
                             </button>
                         </p>
@@ -87,6 +91,8 @@
                     </div>
 
                 </article>
+            </form>
+
         </div>
 
         <div class="column is-2">
@@ -94,58 +100,64 @@
         </div>
 
         <div class="column">
-            <article class="panel is-warning">
-                <p class="panel-heading">
-                    Search for doctors:
-                </p>
+            <form id="2" action="{{ url_for('results')}}" method="post">
 
-                <div class="panel-block">
-                    <div class="field">
-                        <label class="label">Insert Name and Surname</label>
-                        <div class="control">
-                            <div class="columns">
-                                <div class="column">
-                                    <input class="input" type="text" placeholder="Alex">
-                                </div>
-                                <div class="column"><input class="input" type="text" placeholder="Smith">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="panel-block">
-
-
-                    <div class="field">
-                        <label class="subtitle">or</label>
-                    </div>
-
-                </div>
-
-                <div class="panel-block">
-                    <div class="field">
-                        <label class="label">Insert ID</label>
-                        <div class="control">
-                            <input class="input " type="text" placeholder="12345">
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="panel-block">
-                    <p class="control">
-                        <button class="button is-fullwidth is-warning">
-                            Search
-                        </button>
+                <article class="panel is-warning">
+                    <p class="panel-heading">
+                        Search for doctors:
                     </p>
 
-                </div>
+                    <div class="panel-block">
+                        <div class="field">
+                            <label class="label">Insert Name and Surname</label>
+                            <div class="control">
+                                <div class="columns">
+                                    <div class="column">
+                                        <input class="input" type="text" id="doctor_name" name="name"
+                                               placeholder="Alex">
+                                    </div>
+                                    <div class="column"><input class="input" type="text" id="surname"
+                                                               name="doctor_surname" placeholder="Smith">
+                                    </div>
+                                </div>
 
-            </article>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="panel-block">
+
+
+                        <div class="field">
+                            <label class="subtitle">or</label>
+                        </div>
+
+                    </div>
+
+                    <div class="panel-block">
+                        <div class="field">
+                            <label class="label">Insert ID</label>
+                            <div class="control">
+                                <input class="input " type="text" id="doctor_id" name="id" placeholder="12345">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="panel-block">
+                        <p class="control">
+                            <button class="button is-fullwidth is-warning" type="submit"
+                                    name="search" value="doctor">
+                                Search
+                            </button>
+                        </p>
+
+                    </div>
+
+                </article>
+            </form>
 
         </div>
 
@@ -165,10 +177,9 @@
 
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>
-            Project for Software Architecture Course. <a
-                href="https://github.com/romanyshyn-natalia/Microservice-Architecture-Project"><i
-                class="fa fa-github-alt"></i></a>
-        </p>
+        <a href="https://github.com/romanyshyn-natalia/Microservice-Architecture-Project">
+            Project for Software Architecture Course <i
+                class="fa fa-github-alt"></i>
+        </a>
     </div>
 </footer>

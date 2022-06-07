@@ -14,7 +14,7 @@
         </div>
         <div class="column">
             <section class="section">
-                <a href="/">
+                <a>
                     <h1 class="title">Project Hospital</h1>
                     <h2 class="subtitle">Search for patients and medical specialists of Your hospital</h2>
                 </a>
@@ -45,7 +45,6 @@
                 {% for result in results %}
                 <li class="section">
                     <div class="card">
-                        <a href="#">
                             <div class="card-content">
                                 <div class="columns">
 
@@ -82,14 +81,13 @@
                                         <p class="subtitle">{{result.date}}</p>
                                     </div>
                                     <div class="column">
-                                        <h2 class="title is-5">Assigned doctor</h2>
-                                        <p class="subtitle">{{result.doctor}}</p>
+                                        <h2 class="title is-5">{{result.assigned_key[0]}}</h2>
+                                        <p class="subtitle">{{result.assigned_key[1]}}</p>
                                     </div>
 
 
                                 </div>
                             </div>
-                        </a>
                     </div>
                 </li>
                 {% endfor %}
@@ -110,10 +108,9 @@
 
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>
-            Project for Software Architecture Course. <a
-                href="https://github.com/romanyshyn-natalia/Microservice-Architecture-Project"><i
-                class="fa fa-github-alt"></i></a>
-        </p>
+        <a href="https://github.com/romanyshyn-natalia/Microservice-Architecture-Project">
+            Project for Software Architecture Course <i
+                class="fa fa-github-alt"></i>
+        </a>
     </div>
 </footer>
