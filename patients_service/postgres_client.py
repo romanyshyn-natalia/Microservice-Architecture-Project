@@ -1,7 +1,8 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 # from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, TIMESTAMP
 import json
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 
 def get_engine():
@@ -47,7 +48,8 @@ def query_by_name(session, patient_name, patient_surname):
     return response
 
 
-def insert_data(session, patient_name, patient_surname, patient_id, status, assigned_doctor_id, age, sex, diagnosis, registration_date):
+def insert_data(session, patient_name, patient_surname, patient_id, status, assigned_doctor_id, age, sex, diagnosis,
+                registration_date):
     response = session.execute(f"""
     INSERT INTO patients VALUES ('{patient_name}', '{patient_surname}', {patient_id}, '{status}', {assigned_doctor_id}, {age}, '{sex}', '{diagnosis}', '{registration_date}');
     """)
@@ -55,7 +57,10 @@ def insert_data(session, patient_name, patient_surname, patient_id, status, assi
 
 
 def prepare_db(session):
-    patients_file = "./patients.json"
+    session.execute(f"""
+    CREATE TABLE patients (patient_name TEXT, patient_surname TEXT, patient_id INT, status TEXT, assigned_doctor_id INT, age INT, sex TEXT, diagnosis TEXT, registration_date TIMESTAMP, PRIMARY KEY(patient_id));
+    """)
+    patients_file = "../patients.json"
     with open(patients_file) as f:
         data = json.load(f)
         for i in data:

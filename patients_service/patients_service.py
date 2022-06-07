@@ -62,6 +62,7 @@ class RetrieveData(Resource):
         elif args['patient_name'] is not None and args['patient_surname'] is not None:
             result = query_by_name(
                 session, args.patient_name, args.patient_surname)
+            print(result)
             return json.dumps(jsonify_result(result))
         else:
             return "Invalid request"

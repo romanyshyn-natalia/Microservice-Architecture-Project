@@ -70,13 +70,13 @@ def results(search_result=None):
             search_for_url = doctors_service_url
             assigned_key = "Assigned patients ids"
 
-        # # TODO:
         if not (form_name or form_surname):
-            post_response = requests.post(search_for_url, headers={'content-type': 'application/json'},
-                                          data={"id": form_id})
+            print(form_id)
+            post_response = requests.get(search_for_url, headers={'content-type': 'application/json'},
+                                         data=f'{{"patient_id": "{form_id}"}}')
         else:
-            post_response = requests.post(search_for_url, headers={'content-type': 'application/json'},
-                                          data={"name": form_name, "surname": form_surname})
+            post_response = requests.get(search_for_url, headers={'content-type': 'application/json'},
+                                         data=f'{{"patient_name":"{form_name}", "patient_surname":"{form_surname}"}}')
 
         print(post_response.text)
 
