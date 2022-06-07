@@ -1,11 +1,28 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+# from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, TIMESTAMP
+import json
 
 
 def get_engine():
     url = "postgresql://postgres:postgres@localhost:5432/"
-    engine = create_engine(url, pool_size=50, echo=False)
+    engine = create_engine(url, pool_size=50, echo=True)
+    # meta = MetaData()
 
+    # patients = Table(
+    #     'patients', meta,
+    #     Column('patients_name', String, primary_key = True),
+    #     Column('patients_surname', String, primary_key = True),
+    #     Column('patients_id', Integer, primary_key = True),
+    #     Column('status', String),
+    #     Column('assigned_doctor_id', Integer),
+    #     Column('age', Integer),
+    #     Column('sex', String),
+    #     Column('diagnosis', String),
+    #     Column('registration_date', TIMESTAMP),
+    #     schema=""
+    # )
+    # meta.create_all(engine)
     return engine
 
 
@@ -24,24 +41,32 @@ def query_by_id(session, patient_id):
 
 def query_by_name(session, patient_name, patient_surname):
     response = session.execute(f"""
-    SELECT * FROM patients WHERE patient_name = {patient_name} AND patient_surname = {patient_surname};
+    SELECT * FROM patients WHERE patient_name='{patient_name}' AND patient_surname='{patient_surname}';
     """)
+    print(response)
     return response
 
 
-def insert_data(session, data):
+def insert_data(session, patient_name, patient_surname, patient_id, status, assigned_doctor_id, age, sex, diagnosis, registration_date):
     response = session.execute(f"""
-    INSERT INTO patients VALUES ();
+    INSERT INTO patients VALUES ('{patient_name}', '{patient_surname}', {patient_id}, '{status}', {assigned_doctor_id}, {age}, '{sex}', '{diagnosis}', '{registration_date}');
     """)
     return response
+
+
+def prepare_db(session):
+    patients_file = "./patients.json"
+    with open(patients_file) as f:
+        data = json.load(f)
+        for i in data:
+            insert_data(session, i['patient_name'], i['patient_surname'], i['patient_id'], i['status'],
+                        i['assigned_doctor_id'], i['age'], i['sex'], i['diagnosis'], i['registration_date'])
+
+    session.commit()
 
 
 if __name__ == '__main__':
     engine = get_engine()
     print(engine.url.database)
     session = get_session(engine)
-    q_res = session.execute(f"""
-    SELECT * FROM patients WHERE patient_id = 1;
-    """)
-    for row in q_res:
-        print(row)
+    prepare_db(session)
