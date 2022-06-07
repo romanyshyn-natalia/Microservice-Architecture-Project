@@ -4,7 +4,7 @@ import hashlib
 
 app = Flask(__name__)
 
-client = pymongo.MongoClient()
+client = pymongo.MongoClient(port=27017)
 db = client.users
 records = db['registered-users']
 
