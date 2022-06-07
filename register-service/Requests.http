@@ -52,3 +52,16 @@ Content-Type: application/json
 }
 
 ###
+
+POST http://localhost:8081/register
+Content-Type: application/json
+
+{
+  "email": "da@com",
+  "username": "da",
+  "role": "Hospital worker",
+  "password1": "da",
+  "password2": "da"
+}
+
+###

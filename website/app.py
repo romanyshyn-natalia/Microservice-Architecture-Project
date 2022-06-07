@@ -1,19 +1,13 @@
 import requests
-from flask import Flask, render_template, request, redirect, url_for
-from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
+from flask import Flask, render_template, request, redirect, url_for, make_response
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 patients_service_url = "http://localhost:9042"
 login_service_url = "http://localhost:8080/login"
 register_service_url = "http://localhost:8081/register"
 
-# session = requests.Session()
-# retry = Retry(connect=3, backoff_factor=0.5)
-# adapter = HTTPAdapter(max_retries=retry)
-# session.mount('http://', adapter)
-# session.mount('https://', adapter)
 
+# sessions = dict()
 
 @app.route("/", methods=["GET"])
 def base():
@@ -23,6 +17,13 @@ def base():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == 'POST':
+        print({
+            "email": request.form.get("email"),
+            "username": request.form.get("username"),
+            "role": request.form.get("role"),
+            "password1": request.form.get("password1"),
+            "password2": request.form.get("password2")
+        })
         x = requests.post(register_service_url, json={
             "email": request.form.get("email"),
             "username": request.form.get("username"),
@@ -46,17 +47,21 @@ def login():
             "username": request.form.get("username"),
             "password": request.form.get("password"),
         })
-
         if x.text != "success":
+            # cache.set("LOGGED_IN", False)
             return render_template('login.html', error=x.text)
         else:
-            return redirect(url_for('home'))
+            resp = make_response(redirect(url_for('home')))
+            resp.set_cookie('LOGGED_IN', "True")
+            return resp
 
     return render_template('login.html')
 
 
 @app.route("/home", methods=["GET", "POST"])
 def home():
+    if not request.cookies.get('LOGGED_IN') == "True":
+        return redirect(url_for('login'))
     # Search patients: GET (name, surname) (id) -> data
     # Search doctors: GET (name, surname) (id) -> data
     return render_template('home.html')

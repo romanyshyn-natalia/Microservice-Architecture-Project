@@ -20,47 +20,50 @@
                 </a>
             </section>
             <form action="{{ url_for('login')}}" method="post">
-            <section class="section">
+                <section class="section">
 
-                <div class="field">
-                    <p class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" id="username" name="username" placeholder="Username">
-                        <span class="icon is-small is-left">
+                    <div class="field">
+                        <p class="text-danger has-text-danger">{{error}}
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" id="username" name="username" placeholder="Username">
+                            <span class="icon is-small is-left">
       <i class="fas fa-user"></i>
     </span>
 
-                    </p>
-                </div>
-                <div class="field">
-                    <p class="control has-icons-left">
-                        <input class="input" type="password" id="password" name="password"  placeholder="Password">
-                        <span class="icon is-small is-left">
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input" type="password" id="password" name="password" placeholder="Password">
+                            <span class="icon is-small is-left">
       <i class="fas fa-lock"></i>
     </span>
-                    </p>
-                </div>
-                <div class="columns">
-                    <div class="column">
-                        <p class="control">
-                            <button class="button is-success" type="submit">
-                                Login
-                            </button>
                         </p>
                     </div>
+                    <div class="columns">
+                        <div class="column">
+                            <p class="control">
+                                <button class="button is-success" type="submit">
+                                    Login
+                                </button>
+                            </p>
+                        </div>
 
-                    <div class="column">
-                        <p class="control">
-                            <a href="/register">
-                            <button class="button is-ghost">
-                                Do not have an account? Register
-                            </button>
-                            </a>
-                        </p>
+                        <div class="column">
+                            <p class="control">
+                                <a class="button is-ghost" href="/register">
+                                    Do not have an account? Register
+                                </a>
+                            </p>
+                        </div>
+
                     </div>
-
-
-                </div>
-            </section>
+                </section>
+            </form>
         </div>
         <div class="column">
         </div>
