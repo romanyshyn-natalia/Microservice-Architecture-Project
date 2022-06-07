@@ -15,6 +15,24 @@ parser.add_argument('patient_name', type=str, required=False)
 parser.add_argument('patient_surname', type=str, required=False)
 
 
+# curl --header "Content-Type: application/json" \
+#   --request GET \
+#   --data '{"patient_id":"4"}' \
+#   http://localhost:8880/
+
+
+# curl --header "Content-Type: application/json" \
+#   --request GET \
+#   --data '{"patient_id":"26"}' \
+#   http://localhost:8880/
+
+
+# curl --header "Content-Type: application/json" \
+#   --request GET \
+#   --data '{"patient_name":"Emily", "patient_surname":"Ortiz"}' \
+#   http://localhost:8880/
+
+
 def jsonify_result(result):
     res = {"patients": []}
     for i in result:
@@ -37,7 +55,7 @@ def jsonify_result(result):
 class RetrieveData(Resource):
     def get(self):
         args = parser.parse_args()
-        print(args)
+        print('args', args)
         if args['patient_id'] is not None:
             result = query_by_id(session, args.patient_id)
             return json.dumps(jsonify_result(result))
@@ -48,22 +66,11 @@ class RetrieveData(Resource):
         else:
             return "Invalid request"
 
-    # def post(self):
-    #     args = parser.parse_args()
-    #     table = 'patients'
-    #     file_name = args['file_name']
-
 
 api.add_resource(RetrieveData, '/')
 
 if __name__ == "__main__":
     engine = get_engine()
     session = get_session(engine)
-    # print(engine.url.database)
-    # q_res = session.execute(f"""
-    # SELECT * FROM patients WHERE patient_id = 1;
-    # """)
-    # for row in q_res:
-    #     print(row)
 
     app.run(host='localhost', debug=True, port=8880)
