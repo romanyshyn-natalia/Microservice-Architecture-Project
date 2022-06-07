@@ -7,7 +7,7 @@
     "assigned_doctor_id": 1,
     "age": 20,
     "sex": "male",
-    "diagnosis": "single ventricle",
+    "diagnosis": "high blood pressure",
     "registration_date": "2016-06-25 01:10:10-10"
   },
   {
@@ -15,21 +15,21 @@
     "patient_surname": "Miller",
     "patient_id": 2,
     "status": "Transferred to a critical access hospital (CAH)",
-    "assigned_doctor_id": 5,
+    "assigned_doctor_id": 4,
     "age": 19,
     "sex": "male",
-    "diagnosis": "total anomalous pulmonary venous return",
+    "diagnosis": "anemia",
     "registration_date": "2016-06-25 01:10:13-07"
   },
   {
     "patient_name": "David",
     "patient_surname": "Davis",
     "patient_id": 3,
-    "status": "Still patient",
-    "assigned_doctor_id": 2,
+    "status": "Transferred to a critical access hospital (CAH)",
+    "assigned_doctor_id": 7,
     "age": 46,
     "sex": "male",
-    "diagnosis": "deafness",
+    "diagnosis": "stroke",
     "registration_date": "2016-06-25 01:10:14-14"
   },
   {
@@ -37,10 +37,10 @@
     "patient_surname": "Brown",
     "patient_id": 4,
     "status": "Still patient",
-    "assigned_doctor_id": 11,
+    "assigned_doctor_id": 7,
     "age": 76,
     "sex": "female",
-    "diagnosis": "tuberous sclerosis",
+    "diagnosis": "epilepsy",
     "registration_date": "2016-06-25 16:20:23-07"
   },
   {
@@ -51,7 +51,7 @@
     "assigned_doctor_id": 3,
     "age": 32,
     "sex": "male",
-    "diagnosis": "spinal muscular atrophy (SMA)",
+    "diagnosis": "diarrhea",
     "registration_date": "2016-06-25 19:04:03-14"
   },
   {
@@ -59,10 +59,10 @@
     "patient_surname": "Wilson",
     "patient_id": 6,
     "status": "Transferred to a critical access hospital (CAH)",
-    "assigned_doctor_id": 14,
+    "assigned_doctor_id": 4,
     "age": 25,
     "sex": "female",
-    "diagnosis": "neuroblastoma",
+    "diagnosis": "sickle cell disease",
     "registration_date": "2016-06-25 20:10:25-07"
   },
   {
@@ -73,7 +73,7 @@
     "assigned_doctor_id": 15,
     "age": 64,
     "sex": "female",
-    "diagnosis": "multiple sclerosis",
+    "diagnosis": "gout",
     "registration_date": "2016-06-26 16:00:10-04"
   },
   {
@@ -81,10 +81,10 @@
     "patient_surname": "Taylor",
     "patient_id": 8,
     "status": "Discharged to home or self-care (routine discharge)",
-    "assigned_doctor_id": 9,
+    "assigned_doctor_id": 2,
     "age": 23,
     "sex": "male",
-    "diagnosis": "headache, chronic daily",
+    "diagnosis": "infertility",
     "registration_date": "2016-06-26 20:50:34-08"
   },
   {
@@ -92,32 +92,32 @@
     "patient_surname": "Jackson",
     "patient_id": 9,
     "status": "Still patient",
-    "assigned_doctor_id": 12,
+    "assigned_doctor_id": 4,
     "age": 43,
     "sex": "female",
-    "diagnosis": "hearing loss",
+    "diagnosis": "leukemia",
     "registration_date": "2016-06-27 12:00:00-02"
   },
   {
     "patient_name": "Christopher",
     "patient_surname": "Martin",
     "patient_id": 10,
-    "status": "Transferred to a critical access hospital (CAH)",
-    "assigned_doctor_id": 7,
+    "status": "Still patient",
+    "assigned_doctor_id": 15,
     "age": 64,
     "sex": "male",
-    "diagnosis": "coarctation of the aorta",
+    "diagnosis": "back pain",
     "registration_date": "2016-06-27 13:10:54-07"
   },
   {
     "patient_name": "Daniel",
     "patient_surname": "Martin",
     "patient_id": 11,
-    "status": "Still patient",
-    "assigned_doctor_id": 5,
+    "status": "Transferred to a critical access hospital (CAH)",
+    "assigned_doctor_id": 10,
     "age": 34,
     "sex": "male",
-    "diagnosis": "gastroschisis",
+    "diagnosis": "glaucoma",
     "registration_date": "2016-06-28 14:24:23-14"
   },
   {
@@ -125,10 +125,10 @@
     "patient_surname": "Thompson",
     "patient_id": 12,
     "status": "Admitted as an inpatient to this hospital",
-    "assigned_doctor_id": 15,
+    "assigned_doctor_id": 6,
     "age": 25,
     "sex": "female",
-    "diagnosis": "neuroblastoma",
+    "diagnosis": "pneumonia",
     "registration_date": "2016-06-30 15:10:20-04"
   },
   {
@@ -136,10 +136,10 @@
     "patient_surname": "White",
     "patient_id": 13,
     "status": "Still patient",
-    "assigned_doctor_id": 14,
+    "assigned_doctor_id": 7,
     "age": 27,
     "sex": "male",
-    "diagnosis": "club foot",
+    "diagnosis": "spinal tumor",
     "registration_date": "2016-06-30 18:00:13-08"
   },
   {
@@ -147,21 +147,21 @@
     "patient_surname": "Lee",
     "patient_id": 14,
     "status": "Still patient",
-    "assigned_doctor_id": 2,
+    "assigned_doctor_id": 11,
     "age": 73,
     "sex": "female",
-    "diagnosis": "visual impairment (worse than 20/70)",
+    "diagnosis": "back pain",
     "registration_date": "2016-07-01 12:23:41-12"
   },
   {
     "patient_name": "Lisa",
     "patient_surname": "Harris",
     "patient_id": 15,
-    "status": "Transferred to a short-term general hospital for inpatient care",
-    "assigned_doctor_id": 10,
+    "status": "Admitted as an inpatient to this hospital",
+    "assigned_doctor_id": 5,
     "age": 90,
     "sex": "female",
-    "diagnosis": "juvenile arthritis",
+    "diagnosis": "age",
     "registration_date": "2016-07-01 12:25:35-02"
   },
   {
@@ -169,7 +169,7 @@
     "patient_surname": "Lewis",
     "patient_id": 16,
     "status": "Transferred to a designated cancer center",
-    "assigned_doctor_id": 4,
+    "assigned_doctor_id": 9,
     "age": 82,
     "sex": "female",
     "diagnosis": "cancer, bone & joint",
@@ -180,10 +180,10 @@
     "patient_surname": "Robinson",
     "patient_id": 17,
     "status": "Discharged to home or self-care (routine discharge)",
-    "assigned_doctor_id": 9,
+    "assigned_doctor_id": 6,
     "age": 17,
     "sex": "male",
-    "diagnosis": "headache, chronic daily",
+    "diagnosis": "fever",
     "registration_date": "2016-07-01 15:24:52-06"
   },
   {
@@ -191,10 +191,10 @@
     "patient_surname": "King",
     "patient_id": 18,
     "status": "Admitted as an inpatient to this hospital",
-    "assigned_doctor_id": 6,
+    "assigned_doctor_id": 12,
     "age": 20,
     "sex": "male",
-    "diagnosis": "hearing loss",
+    "diagnosis": "diabetes",
     "registration_date": "2016-07-01 19:32:34-14"
   },
   {
@@ -202,21 +202,21 @@
     "patient_surname": "Torres",
     "patient_id": 19,
     "status": "Still patient",
-    "assigned_doctor_id": 7,
+    "assigned_doctor_id": 13,
     "age": 52,
     "sex": "male",
-    "diagnosis": "neuroblastoma",
+    "diagnosis": "depression",
     "registration_date": "2016-07-04 11:05:34-03"
   },
   {
     "patient_name": "Margaret",
     "patient_surname": "Flores",
     "patient_id": 20,
-    "status": "Transferred to a designated cancer center",
-    "assigned_doctor_id": 4,
+    "status": "Still patient",
+    "assigned_doctor_id": 14,
     "age": 47,
     "sex": "female",
-    "diagnosis": "cancer, kidney & renal pelvis",
+    "diagnosis": "emphysema",
     "registration_date": "2016-07-04 12:23:23-12"
   },
   {
@@ -224,21 +224,21 @@
     "patient_surname": "Carter",
     "patient_id": 21,
     "status": "Transferred to a critical access hospital (CAH)",
-    "assigned_doctor_id": 13,
+    "assigned_doctor_id": 15,
     "age": 57,
     "sex": "female",
-    "diagnosis": "celiac disease",
+    "diagnosis": "osteoporosis",
     "registration_date": "2016-07-05 16:12:17-06"
   },
   {
     "patient_name": "Kenneth",
     "patient_surname": "Phillips",
     "patient_id": 22,
-    "status": "Transferred to childrens hospital",
-    "assigned_doctor_id": 14,
+    "status": "Transferred to children`s hospital",
+    "assigned_doctor_id": 1,
     "age": 5,
     "sex": "male",
-    "diagnosis": "childhood obesity",
+    "diagnosis": "heart failure",
     "registration_date": "2016-07-06 02:25:47-14"
   },
   {
@@ -256,7 +256,7 @@
     "patient_name": "Joshua",
     "patient_surname": "Parker",
     "patient_id": 24,
-    "status": "Transferred to childrens hospital",
+    "status": "Transferred to children`s hospital",
     "assigned_doctor_id": 8,
     "age": 3,
     "sex": "male",
@@ -267,11 +267,11 @@
     "patient_name": "Michele",
     "patient_surname": "Cruz",
     "patient_id": 25,
-    "status": "Admitted as an inpatient to this hospital",
-    "assigned_doctor_id": 5,
+    "status": "Transferred to a designated cancer center",
+    "assigned_doctor_id": 14,
     "age": 46,
     "sex": "female",
-    "diagnosis": "neural tube defects",
+    "diagnosis": "lung cancer",
     "registration_date": "2016-07-07 07:07:07-07"
   },
   {
@@ -279,10 +279,10 @@
     "patient_surname": "Ortiz",
     "patient_id": 26,
     "status": "Still patient",
-    "assigned_doctor_id": 1,
+    "assigned_doctor_id": 10,
     "age": 35,
     "sex": "female",
-    "diagnosis": "ventricular septal defect",
+    "diagnosis": "visual impairment (worse than 20/70)",
     "registration_date": "2016-07-07 12:33:12-02"
   },
   {
@@ -290,10 +290,10 @@
     "patient_surname": "Morgan",
     "patient_id": 27,
     "status": "Still patient",
-    "assigned_doctor_id": 12,
+    "assigned_doctor_id": 13,
     "age": 27,
     "sex": "male",
-    "diagnosis": "depression",
+    "diagnosis": "schizophrenia",
     "registration_date": "2016-07-09 10:34:27-12"
   }
 ]
