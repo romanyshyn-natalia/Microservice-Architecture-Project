@@ -1,8 +1,3 @@
-GET http://localhost:8081/login
-Accept: text/html
-
-###
-
 POST http://localhost:8081/register
 Content-Type: application/json
 
@@ -50,7 +45,7 @@ Content-Type: application/json
 
 {
   "email": "korabliova@ucu.edu.ua",
-  "username": "Anna_Korabliova",
+  "username": "Ann_Korabliova",
   "role": "Hospital worker",
   "password1": "pass1111",
   "password2": "pass1111"

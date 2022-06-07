@@ -9,7 +9,7 @@ db = client.users
 records = db['registered-users']
 
 
-@app.route("/register", methods=['GET', 'POST'])
+@app.route("/register", methods=['POST'])
 def register():
     if request.method == "POST":
         response = request.json
