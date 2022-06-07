@@ -20,13 +20,13 @@ def login():
         if user_check:
             pass_check = user_check['password']
             if hashlib.sha256(passwrd.encode('utf-8')).hexdigest() == pass_check:
-                print("You are logged in!")
+                return "success"
             else:
-                print("Wrong password!")
+                return "Wrong password!"
         else:
-            print("User not found!")
+            return "User not found!"
 
-    return ""
+    return "success"
 
 
 if __name__ == "__main__":

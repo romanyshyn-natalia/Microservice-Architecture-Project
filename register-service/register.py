@@ -24,16 +24,16 @@ def register():
         email_found = records.find_one({'email': email})
 
         if user_found:
-            print("This username has already taken.")
+            return "This username has already taken."
         elif email_found:
-            print("This email is already used.")
+            return "This email is already used."
         elif passwrd1 != passwrd2:
-            print("Passwords should match!")
+            return "Passwords should match!"
         else:
             hashed = hashlib.sha256(passwrd1.encode('utf-8')).hexdigest()
             one_record = {'username': username, 'email': email, 'role': role, 'password': hashed}
             records.insert_one(one_record)
-    return ""
+    return "success"
 
 
 if __name__ == "__main__":

@@ -1,27 +1,56 @@
 import requests
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-patients_service_url = "localhost:9042"
-login_service_url = "localhost:8080"
+patients_service_url = "http://localhost:9042"
+login_service_url = "http://localhost:8080/login"
+register_service_url = "http://localhost:8081/register"
+
+# session = requests.Session()
+# retry = Retry(connect=3, backoff_factor=0.5)
+# adapter = HTTPAdapter(max_retries=retry)
+# session.mount('http://', adapter)
+# session.mount('https://', adapter)
+
+
+@app.route("/", methods=["GET"])
+def base():
+    return redirect(url_for('home'))
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    # if success:
-    #     return redirect(url_for('login'))
-    # else:
-    #     return render_template('register_unsuccessful.html')
+    if request.method == 'POST':
+        x = requests.post(register_service_url, json={
+            "email": request.form.get("email"),
+            "username": request.form.get("username"),
+            "role": request.form.get("role"),
+            "password1": request.form.get("password1"),
+            "password2": request.form.get("password2")
+        })
+
+        if x.text != "success":
+            return render_template('register.html', error=x.text)
+        else:
+            return redirect(url_for('login'))
 
     return render_template('register.html')
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    # if success:
-    #     return redirect(url_for('home'))
-    # else:
-    #     return render_template('login_unsuccessful.html')
+    if request.method == 'POST':
+        x = requests.post(login_service_url, json={
+            "username": request.form.get("username"),
+            "password": request.form.get("password"),
+        })
+
+        if x.text != "success":
+            return render_template('login.html', error=x.text)
+        else:
+            return redirect(url_for('home'))
 
     return render_template('login.html')
 
