@@ -1,4 +1,3 @@
-# from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, TIMESTAMP
 import json
 
 from sqlalchemy import create_engine
@@ -8,22 +7,6 @@ from sqlalchemy.orm import sessionmaker
 def get_engine():
     url = "postgresql://postgres:postgres@localhost:5432/"
     engine = create_engine(url, pool_size=50, echo=True)
-    # meta = MetaData()
-
-    # patients = Table(
-    #     'patients', meta,
-    #     Column('patients_name', String, primary_key = True),
-    #     Column('patients_surname', String, primary_key = True),
-    #     Column('patients_id', Integer, primary_key = True),
-    #     Column('status', String),
-    #     Column('assigned_doctor_id', Integer),
-    #     Column('age', Integer),
-    #     Column('sex', String),
-    #     Column('diagnosis', String),
-    #     Column('registration_date', TIMESTAMP),
-    #     schema=""
-    # )
-    # meta.create_all(engine)
     return engine
 
 
@@ -60,7 +43,7 @@ def prepare_db(session):
     session.execute(f"""
     CREATE TABLE patients (patient_name TEXT, patient_surname TEXT, patient_id INT, status TEXT, assigned_doctor_id INT, age INT, sex TEXT, diagnosis TEXT, registration_date TIMESTAMP, PRIMARY KEY(patient_id));
     """)
-    patients_file = "../patients.json"
+    patients_file = "./patients.json"
     with open(patients_file) as f:
         data = json.load(f)
         for i in data:
