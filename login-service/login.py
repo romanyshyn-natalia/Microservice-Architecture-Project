@@ -4,7 +4,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-client = pymongo.MongoClient(port=27017)
+client = pymongo.MongoClient(host="db", port=27017)
 db = client.users
 records = db['registered-users']
 
