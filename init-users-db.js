@@ -5,7 +5,7 @@ db['registered-users'].insertMany([
     {
         "username": "Daria_Omelkina",
         "email": "omelkina.n@ucu.edu.ua",
-	"role": "Main Doctor",
+        "role": "Main Doctor",
         "password": "f7b39419b3f0dde181ec395d002e5090a45143740091ce3b6fa00d868e143b87"
     },
     {

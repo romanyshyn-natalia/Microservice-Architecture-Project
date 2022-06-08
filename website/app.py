@@ -4,10 +4,10 @@ import requests
 from flask import Flask, render_template, request, redirect, url_for, make_response
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-patients_service_url = "http://localhost:8880"
-doctors_service_url = "http://localhost:9042"
-login_service_url = "http://localhost:8080/login"
-register_service_url = "http://localhost:8081/register"
+patients_service_url = "http://patients:8880"
+doctors_service_url = "http://doctors:9042"
+login_service_url = "http://app-login:8080/login"
+register_service_url = "http://app-register:8081/register"
 
 
 @app.route("/", methods=["GET"])
@@ -98,4 +98,4 @@ def results(search_result=None):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
