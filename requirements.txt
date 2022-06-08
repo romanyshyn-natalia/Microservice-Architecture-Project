@@ -3,3 +3,5 @@ pymongo~=4.1.1
 sqlalchemy
 flask_restful
 requests
+psycopg2-binary
+SQLAlchemy

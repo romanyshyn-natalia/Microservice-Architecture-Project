@@ -1,0 +1,3 @@
+# docker exec -it cassandra-node1 cqlsh -e "CREATE KEYSPACE hw8 WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor' : 1 }; USE hw8; CREATE TABLE transactions (name_org text, date timestamp, step int, tp text, amount float, old_balance_org float, new_balance_org float, name_dest text, old_balance_dest float, new_balance_dest float, is_fraud int, is_flagged_fraud int, PRIMARY KEY (name_org));"
+
+docker run -it --network my-cassandra-network --rm cassandra cqlsh cassandra-node1

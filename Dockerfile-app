@@ -1,0 +1,23 @@
+FROM python:3.8-slim
+
+ADD . /app
+
+WORKDIR /app
+
+# RUN apt-get update
+
+# RUN pip install --upgrade pip
+
+RUN pip install flask
+
+RUN pip install flask-restful
+
+RUN pip install cassandra-driver
+
+# COPY patients_service/postgres_client.py .
+
+COPY patients_service/patients_service.py .
+
+COPY patients_service/cassandra_client.py .
+
+ENTRYPOINT ["python3", "patients_service.py"]
