@@ -1,3 +1,5 @@
+import ast
+
 import requests
 from flask import Flask, render_template, request, redirect, url_for, make_response
 
@@ -71,26 +73,25 @@ def results(search_result=None):
             assigned_key = "Assigned patients ids"
 
         if not (form_name or form_surname):
-            print(form_id)
             post_response = requests.get(search_for_url, headers={'content-type': 'application/json'},
                                          data=f'{{"patient_id": "{form_id}"}}')
         else:
             post_response = requests.get(search_for_url, headers={'content-type': 'application/json'},
                                          data=f'{{"patient_name":"{form_name}", "patient_surname":"{form_surname}"}}')
 
-        print(post_response.text)
+        search_result = ast.literal_eval(ast.literal_eval(post_response.text))
+        if "patients" in search_result:
+            search_result = search_result["patients"]
 
-        search_result = [
-            {"name": "John", "surname": "Smith", "id": "12345", "status": "Rehabilitation", "diagnosis": "Unknown",
-             "date": "12.04.2010", "age": "20", "sex": "Male", "assigned_key": [assigned_key, "1"]},
-            {"name": "John 2", "surname": "Smith 2", "id": "876545", "status": "Rehabilitation", "diagnosis": "Unknown",
-             "date": "12.04.2010", "age": "20", "sex": "Male", "assigned_key": [assigned_key, "2"]}
-        ]
+        # search_result = [
+        #     {"name": "John", "surname": "Smith", "id": "12345", "status": "Rehabilitation", "diagnosis": "Unknown",
+        #      "date": "12.04.2010", "age": "20", "sex": "Male", "assigned_doctor_id": "1"},
+        # ]
 
     if not search_result:
         search_result = [
             {"name": "empty", "surname": "empty", "id": "empty", "status": "empty", "diagnosis": "empty",
-             "date": "empty", "age": "empty", "sex": "empty", "assigned_key": ["Assigned doctor id", "empty"]}
+             "date": "empty", "age": "empty", "sex": "empty", "assigned_doctor_id": "empty"}
         ]
 
     return render_template('results.html', results=search_result)

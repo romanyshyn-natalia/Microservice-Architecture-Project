@@ -45,49 +45,17 @@
                 {% for result in results %}
                 <li class="section">
                     <div class="card">
-                            <div class="card-content">
-                                <div class="columns">
-
-                                    <div class="column">
-                                        <h2 class="title is-6">Name</h2>
-                                        <p class="subtitle">{{result.name}}</p>
-                                    </div>
-                                    <div class="column">
-                                        <h2 class="title is-5">Surname</h2>
-                                        <p class="subtitle">{{result.surname}}</p>
-                                    </div>
-                                    <div class="column">
-                                        <h2 class="title is-5">ID</h2>
-                                        <p class="subtitle">{{result.id}}</p>
-                                    </div>
-                                    <div class="column">
-                                        <h2 class="title is-5">Status</h2>
-                                        <p class="subtitle">{{result.status}}</p>
-                                    </div>
-                                    <div class="column">
-                                        <h2 class="title is-5">Age</h2>
-                                        <p class="subtitle">{{result.age}}</p>
-                                    </div>
-                                    <div class="column">
-                                        <h2 class="title is-5">Sex</h2>
-                                        <p class="subtitle">{{result.sex}}</p>
-                                    </div>
-                                    <div class="column">
-                                        <h2 class="title is-5">Diagnosis</h2>
-                                        <p class="subtitle">{{result.diagnosis}}</p>
-                                    </div>
-                                    <div class="column">
-                                        <h2 class="title is-5">Registration date</h2>
-                                        <p class="subtitle">{{result.date}}</p>
-                                    </div>
-                                    <div class="column">
-                                        <h2 class="title is-5">{{result.assigned_key[0]}}</h2>
-                                        <p class="subtitle">{{result.assigned_key[1]}}</p>
-                                    </div>
-
-
+                        <div class="card-content">
+                            <div class="columns">
+                                {% for dct_key in result.keys() %}
+                                <div class="column">
+                                    <h2 class="title is-6">{{dct_key}}</h2>
+                                    <p class="subtitle">{{result[dct_key]}}</p>
                                 </div>
+
+                                {% endfor %}
                             </div>
+                        </div>
                     </div>
                 </li>
                 {% endfor %}
