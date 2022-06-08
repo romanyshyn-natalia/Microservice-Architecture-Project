@@ -6,7 +6,7 @@ services:
       - MONGO_INITDB_DATABASE=users
 
     volumes:
-      - ./init-db.js:/docker-entrypoint-initdb.d/init-db.js:ro
+      - ./init-users-db.js:/docker-entrypoint-initdb.d/init-users-db.js:ro
 
     ports:
       - "27018:27017"
