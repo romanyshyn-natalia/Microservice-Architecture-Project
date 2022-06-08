@@ -90,8 +90,8 @@ def results(search_result=None):
 
     if not search_result:
         search_result = [
-            {"name": "empty", "surname": "empty", "id": "empty", "status": "empty", "diagnosis": "empty",
-             "date": "empty", "age": "empty", "sex": "empty", "assigned_doctor_id": "empty"}
+            {"We couldn't find results with such parameters":
+                 "Name and Surname, or ID of person who interests You, was input incorrectly"}
         ]
 
     return render_template('results.html', results=search_result)
