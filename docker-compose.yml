@@ -1,21 +1,5 @@
 version: "3.3"
 services:
-  app:
-    build: .
-    command: python ./register-service/register.py
-    ports:
-      - "8081:8081"
-    volumes:
-      - .:/app
-    expose:
-      - "8081"
-    links:
-      - db
-    depends_on:
-      - db
-    networks:
-      - register-network
-
   db:
     image: mongo:latest
     environment:
@@ -29,9 +13,56 @@ services:
     expose:
       - "27017"
     networks:
-      - register-network
+      - full-network
+
+  app-register:
+    build: .
+    command: python ./register-service/register.py
+    ports:
+      - "8081:8081"
+    volumes:
+      - .:/app
+    expose:
+      - "8081"
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - full-network
+
+  app-login:
+    build: .
+    command: python ./login-service/login.py
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    expose:
+      - "8080"
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - full-network
+
+  web-app:
+    build: .
+    command: python ./website/app.py
+    ports:
+        - "5000:5000"
+    volumes:
+      - .:/app
+    expose:
+      - "5000"
+    depends_on:
+      - app-register
+      - app-login
+    networks:
+      - full-network
 
 
 networks:
-  register-network:
-    name: register-network
+  full-network:
+    name: full-network
