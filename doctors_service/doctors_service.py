@@ -72,4 +72,4 @@ if __name__ == "__main__":
     engine = get_engine()
     session = get_session(engine)
 
-    app.run(host='localhost', debug=True, port=8881)
+    app.run(host='0.0.0.0', debug=True, port=8881)

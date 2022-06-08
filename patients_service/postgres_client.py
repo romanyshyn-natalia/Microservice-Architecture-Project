@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 def get_engine():
-    url = "postgresql://postgres:postgres@localhost:5432/"
+    url = "postgresql://postgres:postgres@adminer:5432/"
     engine = create_engine(url, pool_size=50, echo=True)
     return engine
 

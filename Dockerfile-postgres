@@ -1,0 +1,23 @@
+FROM python:3.8-slim
+
+ADD . /app
+
+WORKDIR /app
+
+RUN apt-get update
+
+RUN pip install --upgrade pip
+
+RUN pip install flask
+
+RUN pip install flask-restful
+
+RUN pip install SQLAlchemy
+
+RUN pip install psycopg2-binary
+
+COPY patients_service/postgres_client.py .
+
+# COPY patients_service/patients_service.py .
+
+ENTRYPOINT ["python3", "postgres_client.py"]
