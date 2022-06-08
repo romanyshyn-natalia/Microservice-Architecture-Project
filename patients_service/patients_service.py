@@ -17,10 +17,7 @@ parser.add_argument('patient_name', type=str, required=False)
 parser.add_argument('patient_surname', type=str, required=False)
 
 
-# curl --header "Content-Type: application/json" \
-#   --request GET \
-#   --data '{"patient_id":"4"}' \
-#   http://localhost:8880/
+# curl --header "Content-Type: application/json"   --request GET   --data '{"patient_id":1}'   http://0.0.0.0:8080/
 
 
 # curl --header "Content-Type: application/json" \
