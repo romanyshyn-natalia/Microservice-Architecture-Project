@@ -39,10 +39,12 @@ def insert_data(session, doctor_name, doctor_surname, doctor_id, department, exp
 
 
 def prepare_db(session):
+    session.execute(f"""DROP TABLE IF EXISTS doctors;""")
+
     session.execute(f"""
     CREATE TABLE doctors (doctor_name TEXT, doctor_surname TEXT, doctor_id INT, department TEXT, experience TEXT, room INT, assigned_patients integer[10], PRIMARY KEY(doctor_id));
     """)
-    patients_file = "./doctors.json"
+    patients_file = "./data/doctors.json"
     with open(patients_file) as f:
         data = json.load(f)
         for i in data:

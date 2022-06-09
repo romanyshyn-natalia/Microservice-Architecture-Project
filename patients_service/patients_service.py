@@ -1,6 +1,5 @@
 from flask_restful import reqparse, Resource, Api
 from flask import Flask, jsonify
-# # from postgres_client import get_engine, get_session, query_by_id, query_by_name
 from cassandra_client import CassandraClient
 
 import json
@@ -19,17 +18,16 @@ parser.add_argument('patient_surname', type=str, required=False)
 
 # curl --header "Content-Type: application/json"   --request GET   --data '{"patient_id":1}'   http://0.0.0.0:8080/
 
-
 # curl --header "Content-Type: application/json" \
 #   --request GET \
 #   --data '{"patient_id":"26"}' \
-#   http://localhost:8880/
+#   http://localhost:8080/
 
 
 # curl --header "Content-Type: application/json" \
 #   --request GET \
 #   --data '{"patient_name":"Emily", "patient_surname":"Ortiz"}' \
-#   http://localhost:8880/
+#   http://localhost:8080/
 
 
 def jsonify_result_query1(result):

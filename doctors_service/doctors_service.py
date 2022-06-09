@@ -1,6 +1,6 @@
 from flask_restful import reqparse, Resource, Api
 from flask import Flask
-from postgres_client import get_engine, get_session, query_by_id, query_by_name
+from postgres_client import get_engine, get_session, query_by_id, query_by_name, prepare_db
 import json
 
 app = Flask(__name__)
@@ -71,5 +71,6 @@ api.add_resource(RetrieveData, '/')
 if __name__ == "__main__":
     engine = get_engine()
     session = get_session(engine)
+    prepare_db(session)
 
-    app.run(host='0.0.0.0', debug=True, port=8881)
+    app.run(host='localhost', debug=True, port=8881)

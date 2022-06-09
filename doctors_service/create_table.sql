@@ -1,4 +1,4 @@
-CREATE TABLE doctors (doctor_name TEXT, doctor_surname TEXT, doctor_id INT, department TEXT, experience TEXT, room INT, assigned_patients integer[10], PRIMARY KEY(doctor_id));
+CREATE TABLE patients (patient_name TEXT, patient_surname TEXT, patient_id INT, status TEXT, assigned_doctor_id INT, age INT, sex TEXT, diagnosis TEXT, registration_date TIMESTAMP, PRIMARY KEY(patient_id));
 
 
-INSERT INTO doctors VALUES ('Nick', 'H', 1, 'heart', 'a lot', 20, ARRAY [1]);
+INSERT INTO patients VALUES ('Joe', 'J', 1, 'sick', 2, 20, 'male', 'headache', '2016-06-22 19:10:25-07');
