@@ -90,9 +90,24 @@ services:
     expose:
       - "8083"
     depends_on:
-      - cassandra-load-keyspace
+      - cassandra-load-keyspace2
 #      cassandra:
 #        condition: service_healthy
+
+  doctors:
+    build: ./doctors-service
+    command: python doctors_service.py
+    networks:
+      - full-network
+    ports:
+      - "8084"
+    expose:
+      - "8084"
+    depends_on:
+      - patients
+  #      cassandra:
+  #        condition: service_healthy
+
 
   cassandra:
     image: cassandra:3.11.2
@@ -126,6 +141,19 @@ services:
     command: /bin/bash -c "echo loading cassandra keyspace && cqlsh cassandra -f /schema.cql"
     networks:
       - full-network
+
+  cassandra-load-keyspace2:
+    container_name: cassandra-load-keyspace2
+    image: cassandra:3.11.2
+    depends_on:
+      cassandra:
+        condition: service_healthy
+    volumes:
+      - ./doctors-service/create_tables.cql:/schema.cql
+    command: /bin/bash -c "echo loading cassandra keyspace && cqlsh cassandra -f /schema.cql"
+    networks:
+      - full-network
+
 
 networks:
   full-network:

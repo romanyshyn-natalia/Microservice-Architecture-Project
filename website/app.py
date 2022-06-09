@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, redirect, url_for, make_respo
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 patients_service_url = "http://patients:8083"
-doctors_service_url = "http://doctors:9042"
+doctors_service_url = "http://doctors:8084"
 login_service_url = "http://app-login:8080/login"
 register_service_url = "http://app-register:8081/register"
 
@@ -67,21 +67,25 @@ def results(search_result=None):
 
         if request.form.get("search") == "patient":
             search_for_url = patients_service_url
+            target = "patient"
             # assigned_key = "Assigned doctor id"
         else:
             search_for_url = doctors_service_url
+            target = "doctor"
             # assigned_key = "Assigned patients ids"
 
         if not (form_name or form_surname):
             post_response = requests.get(search_for_url, headers={'content-type': 'application/json'},
-                                         data=f'{{"patient_id": "{form_id}"}}')
+                                         data=f'{{"{target}_id": "{form_id}"}}')
         else:
             post_response = requests.get(search_for_url, headers={'content-type': 'application/json'},
-                                         data=f'{{"patient_name":"{form_name}", "patient_surname":"{form_surname}"}}')
+                                         data=f'{{"{target}_name":"{form_name}", "{target}_surname":"{form_surname}"}}')
 
         search_result = ast.literal_eval(ast.literal_eval(post_response.text))
         if "patients" in search_result:
             search_result = search_result["patients"]
+        if "doctors" in search_result:
+            search_result = search_result["doctors"]
 
     if not search_result:
         search_result = [
