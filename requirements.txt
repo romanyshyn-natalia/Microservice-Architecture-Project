@@ -5,3 +5,4 @@ flask_restful
 requests
 psycopg2-binary
 SQLAlchemy
+cassandra-driver
