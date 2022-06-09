@@ -1,5 +1,5 @@
 import ast
-
+import hashlib
 import requests
 from flask import Flask, render_template, request, redirect, url_for, make_response
 
@@ -22,8 +22,8 @@ def register():
             "email": request.form.get("email"),
             "username": request.form.get("username"),
             "role": request.form.get("role"),
-            "password1": request.form.get("password1"),
-            "password2": request.form.get("password2")
+            "password1": hashlib.sha256(request.form.get("password1").encode('utf-8')).hexdigest(),
+            "password2": hashlib.sha256(request.form.get("password2").encode('utf-8')).hexdigest()
         })
 
         if x.text != "success":
@@ -39,7 +39,7 @@ def login():
     if request.method == 'POST':
         x = requests.post(login_service_url, json={
             "username": request.form.get("username"),
-            "password": request.form.get("password"),
+            "password": hashlib.sha256(request.form.get("password").encode('utf-8')).hexdigest()
         })
         if x.text != "success":
             return render_template('login.html', error=x.text)
@@ -51,6 +51,13 @@ def login():
     return render_template('login.html')
 
 
+@app.route("/logout", methods=["GET", "POST"])
+def logout():
+    resp = make_response(redirect(url_for('login')))
+    resp.set_cookie('LOGGED_IN', "False")
+    return resp
+
+
 @app.route("/home", methods=["GET", "POST"])
 def home():
     if not request.cookies.get('LOGGED_IN') == "True":
@@ -60,6 +67,8 @@ def home():
 
 @app.route("/results", methods=["GET", "POST"])
 def results(search_result=None):
+    if not request.cookies.get('LOGGED_IN') == "True":
+        return redirect(url_for('login'))
     if request.method == 'POST':
         form_name = request.form.get("name")
         form_surname = request.form.get("surname")
@@ -68,11 +77,9 @@ def results(search_result=None):
         if request.form.get("search") == "patient":
             search_for_url = patients_service_url
             target = "patient"
-            # assigned_key = "Assigned doctor id"
         else:
             search_for_url = doctors_service_url
             target = "doctor"
-            # assigned_key = "Assigned patients ids"
 
         if not (form_name or form_surname):
             post_response = requests.get(search_for_url, headers={'content-type': 'application/json'},

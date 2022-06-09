@@ -19,7 +19,8 @@ def login():
         user_check = records.find_one({"username": user})
         if user_check:
             pass_check = user_check['password']
-            if hashlib.sha256(passwrd.encode('utf-8')).hexdigest() == pass_check:
+            # if hashlib.sha256(passwrd.encode('utf-8')).hexdigest() == pass_check:
+            if passwrd == pass_check:
                 return "success"
             else:
                 return "Wrong password!"

@@ -30,8 +30,8 @@ def register():
         elif passwrd1 != passwrd2:
             return "Passwords should match!"
         else:
-            hashed = hashlib.sha256(passwrd1.encode('utf-8')).hexdigest()
-            one_record = {'username': username, 'email': email, 'role': role, 'password': hashed}
+            # hashed = hashlib.sha256(passwrd1.encode('utf-8')).hexdigest()
+            one_record = {'username': username, 'email': email, 'role': role, 'password': passwrd1}
             records.insert_one(one_record)
     return "success"
 
