@@ -4,7 +4,7 @@ import requests
 from flask import Flask, render_template, request, redirect, url_for, make_response
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-patients_service_url = "http://patients:8880"
+patients_service_url = "http://patients:8083"
 doctors_service_url = "http://doctors:9042"
 login_service_url = "http://app-login:8080/login"
 register_service_url = "http://app-register:8081/register"
@@ -67,10 +67,10 @@ def results(search_result=None):
 
         if request.form.get("search") == "patient":
             search_for_url = patients_service_url
-            assigned_key = "Assigned doctor id"
+            # assigned_key = "Assigned doctor id"
         else:
             search_for_url = doctors_service_url
-            assigned_key = "Assigned patients ids"
+            # assigned_key = "Assigned patients ids"
 
         if not (form_name or form_surname):
             post_response = requests.get(search_for_url, headers={'content-type': 'application/json'},
@@ -82,11 +82,6 @@ def results(search_result=None):
         search_result = ast.literal_eval(ast.literal_eval(post_response.text))
         if "patients" in search_result:
             search_result = search_result["patients"]
-
-        # search_result = [
-        #     {"name": "John", "surname": "Smith", "id": "12345", "status": "Rehabilitation", "diagnosis": "Unknown",
-        #      "date": "12.04.2010", "age": "20", "sex": "Male", "assigned_doctor_id": "1"},
-        # ]
 
     if not search_result:
         search_result = [

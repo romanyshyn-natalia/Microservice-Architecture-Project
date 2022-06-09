@@ -1,0 +1,137 @@
+[
+  {
+    "doctor_id": 1,
+    "doctor_name": "Brian",
+    "doctor_surname": "Foster",
+    "department": "cardiologist",
+    "experience": 5,
+    "room": 11,
+    "assigned_patients": [1, 22]
+  },
+  {
+    "doctor_id": 2,
+    "doctor_name": "Donna",
+    "doctor_surname": "Castillo",
+    "department": "endocrinologist",
+    "experience": 4,
+    "room": 12,
+    "assigned_patients": [8]
+  },
+  {
+    "doctor_id": 3,
+    "doctor_name": "James",
+    "doctor_surname": "Foster",
+    "department": "gastroenterologist",
+    "experience": 6,
+    "room": 13,
+    "assigned_patients": [5]
+  },
+  {
+    "doctor_id": 4,
+    "doctor_name": "Christopher",
+    "doctor_surname": "Sanders",
+    "department": "hematologist",
+    "experience": 3,
+    "room": 14,
+    "assigned_patients": [2, 6, 9]
+  },
+  {
+    "doctor_id": 5,
+    "doctor_name": "Sandra",
+    "doctor_surname": "Myers",
+    "department": "hospice and palliative medicine specialist",
+    "experience": 1,
+    "room": 15,
+    "assigned_patients": [15]
+  },
+  {
+    "doctor_id": 6,
+    "doctor_name": "Isabella",
+    "doctor_surname": "Collins",
+    "department": "infection disease specialist",
+    "experience": 10,
+    "room": 21,
+    "assigned_patients": [12, 17]
+  },
+  {
+    "doctor_id": 7,
+    "doctor_name": "Sophia",
+    "doctor_surname": "Gray",
+    "department": "neurologist",
+    "experience": 8,
+    "room": 22,
+    "assigned_patients": [3, 4, 13]
+  },
+  {
+    "doctor_id": 8,
+    "doctor_name": "Lucas",
+    "doctor_surname": "Cooper",
+    "department": "allergist",
+    "experience": 6,
+    "room": 23,
+    "assigned_patients": [23, 24]
+  },
+  {
+    "doctor_id": 9,
+    "doctor_name": "Isabella",
+    "doctor_surname": "Peterson",
+    "department": "oncologist",
+    "experience": 3,
+    "room": 24,
+    "assigned_patients": [16]
+  },
+  {
+    "doctor_id": 10,
+    "doctor_name": "Evelyn",
+    "doctor_surname": "Watson",
+    "department": "ophthalmologist",
+    "experience": 2,
+    "room": 25,
+    "assigned_patients": [11, 26]
+  },
+  {
+    "doctor_id": 11,
+    "doctor_name": "Theodore",
+    "doctor_surname": "Wood",
+    "department": "physiatrist",
+    "experience": 15,
+    "room": 31,
+    "assigned_patients": [14]
+  },
+  {
+    "doctor_id": 12,
+    "doctor_name": "James",
+    "doctor_surname": "Cruz",
+    "department": "podiatrist",
+    "experience": 9,
+    "room": 32,
+    "assigned_patients": [18]
+  },
+  {
+    "doctor_id": 13,
+    "doctor_name": "Emma",
+    "doctor_surname": "Turner",
+    "department": "psychiatrist",
+    "experience": 1,
+    "room": 33,
+    "assigned_patients": [19, 27]
+  },
+  {
+    "doctor_id": 14,
+    "doctor_name": "Noah",
+    "doctor_surname": "Kim",
+    "department": "pulmonologist",
+    "experience": 6,
+    "room": 34,
+    "assigned_patients": [20, 25]
+  },
+  {
+    "doctor_id": 15,
+    "doctor_name": "Olivia",
+    "doctor_surname": "Carter",
+    "department": "rheumatologist",
+    "experience": 3,
+    "room": 35,
+    "assigned_patients": [7, 10, 21]
+  }
+]
