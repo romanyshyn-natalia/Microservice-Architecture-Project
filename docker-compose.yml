@@ -90,8 +90,9 @@ services:
     expose:
       - "8083"
     depends_on:
-      cassandra:
-        condition: service_healthy
+      - cassandra-load-keyspace
+#      cassandra:
+#        condition: service_healthy
 
   cassandra:
     image: cassandra:3.11.2

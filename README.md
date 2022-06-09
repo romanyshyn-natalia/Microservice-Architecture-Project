@@ -3,7 +3,7 @@ The final project of Software Architecture course
 
 Instructions:
 ```
-docker-compose up
+docker-compose build && docker-compose up
 ```
 
 Scale to multiple services:

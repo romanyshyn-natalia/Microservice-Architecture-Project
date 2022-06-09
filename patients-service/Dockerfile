@@ -18,4 +18,6 @@ COPY ./data/doctors.json .
 
 COPY ./data/patients.json .
 
+#ENTRYPOINT ["sleep", "patients_service.py"]
+
 #ENTRYPOINT ["python3", "patients_service.py"]
