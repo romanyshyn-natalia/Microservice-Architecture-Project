@@ -26,7 +26,8 @@ docker-compose down
 ```
 
 ## Project architecture
-
+![Architecture](images/arch.png)
+![DB](images/db.png)
 ## Authors
 * [Oleksandra Hutor](https://github.com/Oleksandra2020)
 * [Natalie Romanyshyn](https://github.com/romanyshyn-natalia)
